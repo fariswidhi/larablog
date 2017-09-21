@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Fixed top navbar example for Bootstrap</title>
+    <title>Larablog</title>
 
     <!-- Bootstrap core CSS -->
 
