@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoryController extends Controller
 {
@@ -19,7 +20,8 @@ class CategoryController extends Controller
         public function index()
     {
         //
-        return view('admin/'.$this->folder.'/index');
+        $datas = Category::all();
+        return view('admin/'.$this->folder.'/index',compact('datas'));
     }
 
     /**
@@ -42,6 +44,16 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $category           =   new Category;
+        $category->category     =   $request->name;
+        $save               =   $category->save();
+        if ($save) {
+            return redirect('admin/'.$this->folder);
+        }
+
+
+
+
     }
 
     /**
@@ -53,6 +65,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -64,7 +77,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
-        return view('admin/'.$this->folder.'/edit');
+        $category         = Category::find($id);
+        return view('admin/'.$this->folder.'/edit',compact('category'));
     }
 
     /**
@@ -77,6 +91,13 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $category       = Category::find($id);
+        $category->category =   $request->name;
+        $save           = $category->save();
+
+        if ($save) {
+              return redirect('admin/'.$this->folder);
+        }
     }
 
     /**
@@ -88,5 +109,10 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+        $category  = Category::find($id);
+        $delete    = $category->delete();
+        if ($delete) {
+            return redirect('admin/'.$this->folder);
+        }
     }
 }

@@ -4,14 +4,13 @@
     <div class="container">
       <div class="row">
           <div class="col-lg-6">
-            <div class="form-group">
-            <label>a</label>
-            <input type="text" name="" class="form-control">              
-            </div>
+          {!! Form::open(['route'=>['category.update',$category->id],'method'=>'put']) !!}
               <div class="form-group">
-            <label>a</label>
-            <input type="text" name="" class="form-control">              
-            </div>
+              {{Form::label('name','Category')}}
+              {{ Form::text('name',$category->category,['class'=>'form-control','required'=>'required'])}}
+             </div>
+             <button type="submit" class="btn btn-primary">Save</button>
+            {!! Form::close() !!}
           </div>
       </div>
     </div>

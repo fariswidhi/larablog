@@ -3,21 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
+use Illuminate\Routing;
+use Validator;
 use Illuminate\Http\Request;
+use App\Article;
+use App\Category;
 
 class ArticleController extends Controller
 {
 
     protected $folder = 'article';
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+        public function index()
     {
         //
-        return view('admin/'.$this->folder.'/index');
+        $datas = Article::all();
+        return view('admin/'.$this->folder.'/index',compact('datas'));
     }
 
     /**
@@ -40,6 +47,33 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
+
+        $validator         =    Validator::make($request->all(),[
+                                'file'=>'image'
+                                ]);
+
+        if ($validator->fails()) {
+            # code...
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $photoName = time().'.'.$request->file->getClientOriginalExtension();
+        $request->file->move(public_path('uploads'), $photoName);
+
+        $article           =   new Article;
+        $article->title     =   $request->title;
+        $article->content     =   $request->article;
+        $article->photo     =   $photoName;
+        $article->category_id     =   $request->category;
+        
+        $save               =   $article->save();
+        if ($save) {
+            return redirect('admin/'.$this->folder);
+        }
+
+
+
+
     }
 
     /**
@@ -51,6 +85,7 @@ class ArticleController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -62,7 +97,11 @@ class ArticleController extends Controller
     public function edit($id)
     {
         //
-        return view('admin/'.$this->folder.'/edit');
+        $article         = Article::find($id);
+        $select          =  Article::with('category')->FindorFail($id);
+        $idcat  = $select->category->pluck('id');
+        $categories = Category::all();
+        return view('admin/'.$this->folder.'/edit',compact('article','categories','idcat'));
     }
 
     /**
@@ -75,6 +114,33 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+    $validator         =    Validator::make($request->all(),[
+                                'file'=>'image'
+                                ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+
+
+        $article            =      Article::find($id);
+        $article->title     =       $request->title;
+        $article->content    =      $request->article;
+        if (!empty($request->file)) {
+        $photoName = time().'.'.$request->file->getClientOriginalExtension();
+        $request->file->move(public_path('uploads'), $photoName);
+        $article->photo     =       $photoName;
+
+        }
+        $article->category_id     =   $request->category;
+        
+        $save               =   $article->save();
+        if ($save) {
+            return redirect('admin/'.$this->folder);
+        }
+
     }
 
     /**
@@ -86,5 +152,10 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+        $category  = Category::find($id);
+        $delete    = $category->delete();
+        if ($delete) {
+            return redirect('admin/'.$this->folder);
+        }
     }
 }
