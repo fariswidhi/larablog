@@ -152,8 +152,8 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
-        $category  = Category::find($id);
-        $delete    = $category->delete();
+        $article  = Article::find($id);
+        $delete    = $article->delete();
         if ($delete) {
             return redirect('admin/'.$this->folder);
         }

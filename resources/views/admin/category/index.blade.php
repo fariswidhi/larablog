@@ -6,6 +6,7 @@
      <ul class="list-group">
      @foreach ($datas as $data)
       <li class="list-group-item">
+
   		<a class="pull-left text-secondary" href="#" style="font-size: 25px;">{{$data->category}}</a> <br>
   		<a class="pull-left btn btn-success btn-sm" href="{{ url('/admin/category/'.$data->id.'/edit') }}">Edit</a>
           {!! Form::open(['method'=>'delete','route'=>['category.destroy',$data->id]]) !!}
