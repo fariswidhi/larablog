@@ -12,5 +12,5 @@ php artisan migrate
 4. done
 
 ## Screenshoot
-![alt text](https://raw.githubusercontent.com/fariswidhi/larablog/master/public/uploads/ss.png)
+![alt text](https://raw.githubusercontent.com/fariswidhi/larablog/master/public/uploads/ss1.png)
 
