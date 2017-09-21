@@ -1,5 +1,5 @@
 
-## Simpe Blog Using Laravel 5.5
+## Simpe Blog Using Laravel 5.5 & Bootstrap 4
 
 This is a simple blog application using laravel 5.5.
 how to use:
@@ -8,5 +8,5 @@ how to use:
 3. run:
 ``
 php artisan migrate
-``
+`` on your cli
 4. done
