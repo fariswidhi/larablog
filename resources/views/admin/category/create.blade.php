@@ -4,14 +4,13 @@
     <div class="container">
       <div class="row">
           <div class="col-lg-6">
-            <div class="form-group">
-            <label>a</label>
-            <input type="text" name="" class="form-control">              
-            </div>
+          {!! Form::open(['url' => 'foo/bar']) !!}
               <div class="form-group">
-            <label>a</label>
-            <input type="text" name="" class="form-control">              
-            </div>
+              {{Form::label('name','Category')}}
+              {{ Form::text('name','',['class'=>'form-control'])}}
+             </div>
+             <button type="submit" class="btn btn-primary">Save</button>
+            {!! Form::close() !!}
           </div>
       </div>
     </div>
