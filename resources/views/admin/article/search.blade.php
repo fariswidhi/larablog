@@ -20,8 +20,6 @@
 
 </ul>
 
-{{ $datas->links('vendor.pagination.bootstrap-4', ['foo' => 'bar']) }}
-
     </div>
 
 

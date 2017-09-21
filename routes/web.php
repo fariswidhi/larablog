@@ -14,8 +14,13 @@
 Route::get('/admin', 'Admin\AdminController@index');
 Route::resource('/admin/category', 'Admin\CategoryController');
 Route::resource('/admin/article', 'Admin\ArticleController');
+Route::get('/admin/search', 'Admin\ArticleController@search')->name('admin.search');
 
 
 Route::get('/', 'MainController@index');
 
-Route::get('/{article}', 'MainController@show');
+Route::get('search/', 'MainController@search')->name('main.search');
+
+Route::get('/{category}', 'MainController@category');
+
+Route::get('/{category}/{id}', 'MainController@show');

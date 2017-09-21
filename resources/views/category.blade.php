@@ -3,12 +3,13 @@
   
 
     <div class="container">
-    @if (count($datas)==0)
+
+        <h3>{{ $category->category}}</h3>
+         @if (count($datas)==0)
       <div class="jumbotron">
           <center><h1>Data Not Found</h1></center>
         </div>
-    @else
-    
+        @else
       <div class="row">
       @foreach ($datas as $data)
         <div class="col-lg-4">
@@ -23,15 +24,17 @@
                   </a>
             </div>
           </div>
+
+
       @endforeach
           
+@endif
 
 
       </div>
               
 {{ $datas->links('vendor.pagination.bootstrap-4', ['foo' => 'bar']) }}
 
-    @endif
     </div><!-- /.container -->
 
 

@@ -20,7 +20,7 @@ class CategoryController extends Controller
         public function index()
     {
         //
-        $datas = Category::all();
+        $datas = Category::paginate(10);
         return view('admin/'.$this->folder.'/index',compact('datas'));
     }
 
@@ -44,16 +44,20 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        $category           =   new Category;
-        $category->category     =   $request->name;
-        $save               =   $category->save();
-        if ($save) {
+      
+        $find = Category::where('category',$request->name)->get();
+        if(count($find) ==0){
+            $category           =   new Category;
+             $category->category     =   $request->name;
+             $save               =   $category->save();
+             if ($save) {
             return redirect('admin/'.$this->folder);
+            }
         }
-
-
-
-
+        else{
+            return redirect()->back()->withInput()->with('error','Category Name Error');
+        }
+       
     }
 
     /**

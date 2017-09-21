@@ -23,7 +23,7 @@ class ArticleController extends Controller
         public function index()
     {
         //
-        $datas = Article::all();
+        $datas = Article::paginate(10);
         return view('admin/'.$this->folder.'/index',compact('datas'));
     }
 
@@ -157,5 +157,10 @@ class ArticleController extends Controller
         if ($delete) {
             return redirect('admin/'.$this->folder);
         }
+    }
+
+    public function search(Request $request){
+        $datas = Article::where('title','LIKE','%'.$request->search.'%')->get();
+        return view('admin/'.$this->folder.'/search',compact('datas'));
     }
 }
