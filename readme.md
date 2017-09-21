@@ -10,3 +10,7 @@ how to use:
 php artisan migrate
 `` on your cli
 4. done
+
+## Screenshoot
+![alt text](https://raw.githubusercontent.com/fariswidhi/larablog/master/public/uploads/ss.png)
+
