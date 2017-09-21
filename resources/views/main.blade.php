@@ -28,7 +28,7 @@
 
 
       </div>
-              
+
 {{ $datas->links('vendor.pagination.bootstrap-4', ['foo' => 'bar']) }}
 
     @endif

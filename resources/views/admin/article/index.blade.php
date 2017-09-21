@@ -3,6 +3,13 @@
 
   <div class="container">
   <a style="margin: 5px;" href="{{ url('/admin/article/create') }}" class="btn btn-primary">Create</a>
+  @if (count($datas) ==0)
+    {{-- expr --}}
+    <div class="jumbotron">
+        <h3>Data Not Found</h3>
+    </div>
+    @else
+
 <ul class="list-group">
 
      @foreach ($datas as $data)
@@ -22,7 +29,9 @@
 
 {{ $datas->links('vendor.pagination.bootstrap-4', ['foo' => 'bar']) }}
 
+  @endif
     </div>
+
 
 
 @endsection

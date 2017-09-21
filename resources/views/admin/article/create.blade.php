@@ -17,11 +17,11 @@
              </div>
              <div class="form-group">
               {{Form::label('file','Banner')}}
-              {{ Form::file('file','',['required'=>'required','class'=>'form-control'])}}
+              {{ Form::file('file',['required'=>'required','class'=>'form-control'])}}
              </div>
              <div class="form-group">
               {{Form::label('article','Article')}}
-              {{ Form::textarea('article','',['class'=>'form-control','name'=>'editor1'])}}
+              {{ Form::textarea('article','',['class'=>'form-control','name'=>'article','required'=>'required'])}}
             
              </div>
              <div class="form-group">

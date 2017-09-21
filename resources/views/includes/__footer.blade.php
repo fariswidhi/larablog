@@ -7,10 +7,13 @@
     <script src="{{ url('vendor/popper/js/popper.js') }}"></script>
     <script src="{{ url('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+    @if (Request::segment(2) == 'article' && Request::segment(3) == 'create')
 	<script src="{{ url('vendor/ckeditor/ckeditor/ckeditor.js') }}"></script>
         <script>
-      CKEDITOR.replace('editor1');
+      CKEDITOR.replace('article');
   </script>
+
+    @endif
 
 
   </body>
