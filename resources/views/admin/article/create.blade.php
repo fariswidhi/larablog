@@ -21,7 +21,8 @@
              </div>
              <div class="form-group">
               {{Form::label('article','Article')}}
-              {{ Form::textarea('article','',['class'=>'form-control'])}}
+              {{ Form::textarea('article','',['class'=>'form-control','name'=>'editor1'])}}
+            
              </div>
              <div class="form-group">
               {{Form::label('category','Category')}}
@@ -34,4 +35,3 @@
     </div>
 
 @endsection
-

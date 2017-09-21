@@ -17,6 +17,7 @@
     @if (Request::segment(1) == 'admin')
       {{-- expr --}}
     <link href="{{ url('css/navbar-top-fixed.css') }}" rel="stylesheet">      
+
     @endif
 
     <link rel="stylesheet" type="text/css" href="{{ url('css/starter-template.css') }}">

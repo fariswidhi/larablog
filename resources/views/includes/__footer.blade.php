@@ -7,5 +7,11 @@
     <script src="{{ url('vendor/popper/js/popper.js') }}"></script>
     <script src="{{ url('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+	<script src="{{ url('vendor/ckeditor/ckeditor/ckeditor.js') }}"></script>
+        <script>
+      CKEDITOR.replace('editor1');
+  </script>
+
+
   </body>
 </html>
